@@ -93,6 +93,7 @@ def merge_daily_city_metrics(session):
 
 def main(session: Session) -> str:
     # Create the DAILY_CITY_METRICS table if it doesn't exist
+    session.use_database("HOL_DB")
     if not table_exists(session, schema='ANALYTICS', name='DAILY_CITY_METRICS'):
         create_daily_city_metrics_table(session)
     

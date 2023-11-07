@@ -23,7 +23,9 @@ TABLE_DICT = {
 # SNOWFLAKE ADVANTAGE: Snowflake Tables (not file-based)
 
 def load_raw_table(session, tname=None, s3dir=None, year=None, schema=None):
+    session.use_database("HOL_DB")
     session.use_schema(schema)
+    
     if year is None:
         location = "@external.frostbyte_raw_stage/{}/{}".format(s3dir, tname)
     else:
